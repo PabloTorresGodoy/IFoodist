@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">ifoodist</string>
+    <string name="tvTitle">iFoodist</string>
+    <string name="tieUser">Correo electrónico</string>
+    <string name="tiePassword">Contraseña</string>
+    <string name="chkRemember">Recuérdame</string>
+    <string name="btSingUp">Registrarse</string>
+    <string name="btSingIn">Iniciar Sesión</string>
+    <string name="tvSingUpTitle">Registro</string>
+    <string name="tieSingUpUser">Nombre de usuario</string>
+    <string name="tieSingUpMail">Correo electrónico</string>
+    <string name="tieSingUpPassword">Contraseña</string>
+    <string name="tieSingUpConfirmPassword">Confirmar contraseña</string>
+    <string name="btSingUpRegistrarse">Registrarse</string>
+    <string name="tvRegisterOption">O inicie sesion con...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btRecetario">Recetario</string>
+    <string name="btLista">Lista de la compra</string>
+    <string name="btAcerca">Acerda de...</string>
+    <string name="btAbout">Quienes somos</string>
+    <string name="tieNombre">Nombre</string>
+    <string name="tieDuracion">Duración</string>
+    <string name="tieCantidad">Cantidad</string>
+    <string name="tvNombre">Nombre: Sandwitch</string>
+    <string name="tvCategoria">Categoria: Plato Principal</string>
+    <string name="tvDuracion">Duración: 5min</string>
+    <string name="tvCantidad">Cantidad: 1 persona</string>
+    <string name="action_recipe">Recetas</string>
+    <string name="action_shopping_list">Lista de la compra</string>
+    <string name="menu_opciones">Opciones</string>
+    <string name="action_help">Ayuda</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="action_about">Sobre nosotros</string>
+    <string name="tieTitle">Titulo</string>
+    <string name="channel_name">Canal de notificaciones de Ifoodist</string>
+    <string name="notification_title_dependency">Alta de receta</string>
+    <string name="text_add_dependency">Se ha creado la receta</string>
+    <string name="notification_title_recipe">Alta de receta</string>
+    <string name="text_add_recipe">"Se ha creado la receta: "</string>
+
+    <string-array name="categorias">
+        <item>Bebida</item>
+        <item>Plato Principal</item>
+        <item>Postre</item>
+        <item>Salsa</item>
+        <item>Entrante</item>
+    </string-array>
+</resources>

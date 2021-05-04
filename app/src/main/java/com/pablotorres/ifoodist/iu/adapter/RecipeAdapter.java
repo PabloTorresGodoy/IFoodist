@@ -1,0 +1,97 @@
+package com.pablotorres.ifoodist.iu.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.pablotorres.ifoodist.R;
+import com.pablotorres.ifoodist.data.model.Recipe;
+
+import java.util.Collections;
+import java.util.List;
+
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder>{
+
+   private List<Recipe> list;
+   private  OnManageRecipeListener recipeListener;
+
+
+    public RecipeAdapter(List<Recipe> list, OnManageRecipeListener recipeListener) {
+        this.list = list;
+        this.recipeListener = recipeListener;
+    }
+
+    public void ordenar() {
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void delete(Recipe deleted){
+        this.list.remove(deleted);
+        notifyDataSetChanged();
+    }
+
+    public void update(List<Recipe> list) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public interface OnManageRecipeListener{
+        void onClickRecipe(Recipe recipe);
+        void onDeleteRecipe(Recipe recipe);
+    }
+
+    @NonNull
+    @Override
+    public RecipeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recipe,parent,false);
+        return new ViewHolder(view, recipeListener);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder holder, int position) {
+        holder.tvNombre.setText(list.get(position).getNombre());
+        holder.tvCategoria.setText(list.get(position).getCategoria());
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+
+    class ViewHolder extends RecyclerView.ViewHolder{
+
+       TextView tvNombre;
+       TextView tvCategoria;
+       ImageView imgCorazon;
+
+       public ViewHolder(@NonNull View itemView, final OnManageRecipeListener listener) {
+           super(itemView);
+           tvNombre = itemView.findViewById(R.id.tvTitle);
+           tvCategoria = itemView.findViewById(R.id.tvCategoria);
+           imgCorazon = itemView.findViewById(R.id.imgCorazon);
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   listener.onClickRecipe(list.get(getAdapterPosition()));
+               }
+           });
+
+           itemView.setOnLongClickListener(new View.OnLongClickListener() {
+               @Override
+               public boolean onLongClick(View v) {
+                   listener.onDeleteRecipe((list.get(getAdapterPosition())));
+                   return false;
+               }
+           });
+
+       }
+   }
+}

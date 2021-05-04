@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference android:key="@string/key_account" android:title="@string/title_account" android:summary="@string/summary_account" />
+    <PreferenceCategory android:title="@string/title_category_notification">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/key_notification"
+            android:title="@string/title_notification"
+            android:summary="@string/summary_notification"/>
+
+        <ListPreference
+            android:entries="@array/ringtone"
+            android:entryValues="@array/ringtone_value"
+            android:key="@string/key_ringtone_notification"
+            android:summary="@string/summary_ringtone_notification"
+            android:title="@string/title_ringtone_notification" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/title_category_help"
+        android:summary="@string/summary_category_help">
+        <Preference android:title="@string/title_aboutme" >
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://www.moronlu18.com/wordpress">
+            </intent>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

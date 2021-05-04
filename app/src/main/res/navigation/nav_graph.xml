@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recetarioFragment">
+
+    <fragment
+        android:id="@+id/recetarioFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.ListRecipeFragment"
+        android:label="fragment_recetario"
+        tools:layout="@layout/fragment_list_recipe" >
+        <action
+            android:id="@+id/action_recetarioFragment_to_addRecetaFragment"
+            app:destination="@id/addRecetaFragment" />
+        <action
+            android:id="@+id/action_recetarioFragment_to_showRecetaFragment"
+            app:destination="@id/showRecetaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.AddRecetaFragment"
+        android:label="fragment_add_receta"
+        tools:layout="@layout/fragment_add_receta" />
+    <fragment
+        android:id="@+id/showRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.ShowRecetaFragment"
+        android:label="fragment_show_receta"
+        tools:layout="@layout/fragment_show_receta" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.pablotorres.ifoodist.iu.preferences.SettingFragment"
+        android:label="SettingFragment" />
+</navigation>

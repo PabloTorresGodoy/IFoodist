@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llcontainerSingUp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".iu.SignUpActivity">
+
+
+    <TextView
+        android:id="@+id/tvSingUpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/SingUp_title_margin_top"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/tvSingUpTitle"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSingUpUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvSingUpTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSingUpUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieSingUpUser" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSingUpMail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilSingUpUser"
+        app:layout_constraintStart_toStartOf="@+id/tilSingUpUser"
+        app:layout_constraintTop_toBottomOf="@+id/tilSingUpUser">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSingUpMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieSingUpMail" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSingUpPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilSingUpMail"
+        app:layout_constraintStart_toStartOf="@+id/tilSingUpMail"
+        app:layout_constraintTop_toBottomOf="@+id/tilSingUpMail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSingUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieSingUpPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSingUpConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilSingUpPassword"
+        app:layout_constraintStart_toStartOf="@+id/tilSingUpPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tilSingUpPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSingUpConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieSingUpConfirmPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btSingUpRegistrarse"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ShowDashBoard"
+        android:text="@string/btSingUpRegistrarse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilSingUpConfirmPassword"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

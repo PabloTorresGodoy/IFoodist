@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ifoodist</string>
+    <string name="tvTitle">iFoodist</string>
+    <string name="tieUser">Email</string>
+    <string name="tiePassword">Password</string>
+    <string name="chkRemember">Remember me</string>
+    <string name="btSingIn">Sign In</string>
+    <string name="btSingUp">Sign Up</string>
+    <string name="tvSingUpTitle">Sign Up</string>
+    <string name="tieSingUpUser">Username</string>
+    <string name="tieSingUpMail">Email</string>
+    <string name="tieSingUpPassword">Password</string>
+    <string name="tieSingUpConfirmPassword">Confirm Password</string>
+    <string name="btSingUpRegistrarse">Login</string>
+    <string name="tvRegisterOption">Or login with...</string>
+    <string name="btRecetario">Recipes</string>
+    <string name="btLista">Shopping List</string>
+    <string name="tieNombre">Name</string>
+    <string name="tieDuracion">Duration</string>
+    <string name="tieCantidad">Quantity</string>
+    <string name="tvNombre">Name: Sandwitch</string>
+    <string name="tvCategoria">Category: main dish</string>
+    <string name="tvDuracion">Duration: 5min</string>
+    <string name="tvCantidad">Quantity: 1 person</string>
+</resources>
