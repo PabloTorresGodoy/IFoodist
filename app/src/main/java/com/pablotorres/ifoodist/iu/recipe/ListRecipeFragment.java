@@ -65,7 +65,9 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
 
         imgNoData = view.findViewById(R.id.imgNoData);
 
-        fab = view.findViewById(R.id.fabCrear);
+        fab = getActivity().findViewById(R.id.fab);
+        fab.setVisibility(View.VISIBLE);
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.mas));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

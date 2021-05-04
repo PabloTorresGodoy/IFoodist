@@ -69,7 +69,9 @@ public class AddRecetaFragment extends Fragment {
         edPasos = view.findViewById(R.id.edShowPasos);
 
         spinner = view.findViewById(R.id.spShowCategoria);
-        fab = view.findViewById(R.id.fabUpdate);
+        fab = getActivity().findViewById(R.id.fab);
+        fab.setVisibility(View.VISIBLE);
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.tic));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

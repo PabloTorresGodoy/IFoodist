@@ -69,7 +69,9 @@ public class ShowRecetaFragment extends Fragment {
         edShowIngredientes.setText(recipe.getIngredientes());
         edShowPasos.setText(recipe.getPasos());
 
-        fab = view.findViewById(R.id.fabUpdate);
+        fab = getActivity().findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.tic));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
