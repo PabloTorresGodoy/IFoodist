@@ -40,10 +40,11 @@
     <string name="text_add_recipe">"Se ha creado la receta: "</string>
 
     <string-array name="categorias">
-        <item>Bebida</item>
         <item>Plato Principal</item>
-        <item>Postre</item>
-        <item>Salsa</item>
         <item>Entrante</item>
+        <item>Postre</item>
+        <item>Bebida</item>
+        <item>Salsa</item>
+        <item>Otro</item>
     </string-array>
 </resources>
