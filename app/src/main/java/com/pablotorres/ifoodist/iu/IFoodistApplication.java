@@ -7,7 +7,7 @@ import android.content.Context;
 import android.os.Build;
 
 import com.pablotorres.ifoodist.R;
-import com.pablotorres.ifoodist.data.IfoodistDataBase;
+//import com.pablotorres.ifoodist.data.IfoodistDataBase;
 import com.pablotorres.ifoodist.iu.preferences.IFoodistPreferences;
 
 public class IFoodistApplication extends Application {
@@ -17,7 +17,7 @@ public class IFoodistApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        IfoodistDataBase.create(this);
+//        IfoodistDataBase.create(this);
         IFoodistPreferences.newInstance(this);
         createNotificationChannel();
     }

@@ -13,27 +13,20 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
-public class Recipe implements Comparable<Recipe>, Serializable, Parcelable {
+public class Recipe implements Comparable<Recipe>, Serializable {
 
-    @NonNull @PrimaryKey
     private String nombre;
-    @NonNull
     private String categoria;
-    @NonNull
     private String duracion;
-    @NonNull
     private String cantidad;
-    @NonNull
-    private String ingredientes;
-    @NonNull
-    private String pasos;
-    @NonNull
+    private List<String> ingredientes;
+    private List<String> pasos;
     private boolean favorite;
 
-    public Recipe(String nombre, String categoria, String duracion, String cantidad, String ingredientes, String pasos, boolean favorite) {
+    public Recipe(String nombre, String categoria, String duracion, String cantidad, List<String> ingredientes, List<String> pasos, boolean favorite) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.duracion = duracion;
@@ -43,27 +36,7 @@ public class Recipe implements Comparable<Recipe>, Serializable, Parcelable {
         this.favorite = favorite;
     }
 
-    @Ignore
-    protected Recipe(Parcel in) {
-        nombre = in.readString();
-        categoria = in.readString();
-        duracion = in.readString();
-        cantidad = in.readString();
-        ingredientes = in.readString();
-        pasos = in.readString();
-    }
 
-    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
-        @Override
-        public Recipe createFromParcel(Parcel in) {
-            return new Recipe(in);
-        }
-
-        @Override
-        public Recipe[] newArray(int size) {
-            return new Recipe[size];
-        }
-    };
 
     public String getNombre() {
         return nombre;
@@ -97,19 +70,19 @@ public class Recipe implements Comparable<Recipe>, Serializable, Parcelable {
         this.cantidad = cantidad;
     }
 
-    public String getIngredientes() {
+    public List<String> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(String ingredientes) {
+    public void setIngredientes(List<String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 
-    public String getPasos() {
+    public List<String> getPasos() {
         return pasos;
     }
 
-    public void setPasos(String pasos) {
+    public void setPasos(List<String> pasos) {
         this.pasos = pasos;
     }
 
@@ -133,20 +106,5 @@ public class Recipe implements Comparable<Recipe>, Serializable, Parcelable {
     @Override
     public int compareTo(Recipe o) {
         return this.nombre.compareTo(o.nombre);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(nombre);
-        dest.writeString(categoria);
-        dest.writeString(cantidad);
-        dest.writeString(duracion);
-        dest.writeString(ingredientes);
-        dest.writeString(pasos);
     }
 }

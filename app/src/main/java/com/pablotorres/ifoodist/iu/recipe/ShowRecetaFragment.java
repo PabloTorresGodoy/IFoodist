@@ -5,29 +5,36 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
-import com.pablotorres.ifoodist.data.repository.RecipeRepository;
+import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
+import com.pablotorres.ifoodist.iu.adapter.IngredienteShowAdapter;
+import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
+import com.pablotorres.ifoodist.iu.adapter.PasoShowAdapter;
+
+import java.util.ArrayList;
 
 public class ShowRecetaFragment extends Fragment {
 
     private TextInputEditText tieShowNombre;
     private TextInputEditText tieSHowDuracion;
     private TextInputEditText tieShowCantidad;
-    private EditText edShowIngredientes;
-    private EditText edShowPasos;
+    private RecyclerView rvShowIngredientes;
+    private RecyclerView rvShowPasos;
     private FloatingActionButton fab;
-    private Spinner spShowCategoria;
+    private TextView tvCategoria;
+    private IngredienteShowAdapter ingredienteAdapter;
+    private PasoShowAdapter pasoAdapter;
 
     public static ShowRecetaFragment newInstance(Bundle bundle) {
         ShowRecetaFragment fragment = new ShowRecetaFragment();
@@ -54,31 +61,35 @@ public class ShowRecetaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tieShowNombre = view.findViewById(R.id.tieShowNombre);
-        tieSHowDuracion = view.findViewById(R.id.tieShowDuracion);
-        tieShowCantidad = view.findViewById(R.id.tieShowCantidad);
-        edShowIngredientes = view.findViewById(R.id.edShowIngredientes);
-        edShowPasos = view.findViewById(R.id.edShowPasos);
-        spShowCategoria = view.findViewById(R.id.spShowCategoria);
+        tieShowNombre = view.findViewById(R.id.tieNombre);
+        tieSHowDuracion = view.findViewById(R.id.tieDuracion);
+        tieShowCantidad = view.findViewById(R.id.tieCantidad);
+        rvShowIngredientes = view.findViewById(R.id.rvIngredientes);
+        rvShowPasos = view.findViewById(R.id.rvPasos);
+        tvCategoria = view.findViewById(R.id.tvCategoria);
 
         Recipe recipe = (Recipe) getArguments().getSerializable("recipe");
 
         tieShowNombre.setText(recipe.getNombre());
         tieShowCantidad.setText(recipe.getCantidad());
         tieSHowDuracion.setText(recipe.getDuracion());
-        edShowIngredientes.setText(recipe.getIngredientes());
-        edShowPasos.setText(recipe.getPasos());
+        tvCategoria.setText(recipe.getCategoria());
+
+        rvShowIngredientes = view.findViewById(R.id.rvIngredientes);
+        ingredienteAdapter = new IngredienteShowAdapter(new ArrayList<>());
+        RecyclerView.LayoutManager layoutManagerIngrediente = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false );
+        rvShowIngredientes.setLayoutManager(layoutManagerIngrediente);
+        rvShowIngredientes.setAdapter(ingredienteAdapter);
+        ingredienteAdapter.update(recipe.getIngredientes());
+
+        rvShowPasos = view.findViewById(R.id.rvPasos);
+        pasoAdapter = new PasoShowAdapter(new ArrayList<>());
+        RecyclerView.LayoutManager layoutManagerPaso = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false );
+        rvShowPasos.setLayoutManager(layoutManagerPaso);
+        rvShowPasos.setAdapter(pasoAdapter);
+        pasoAdapter.update(recipe.getPasos());
 
         fab = getActivity().findViewById(R.id.fab);
-        fab.setVisibility(View.INVISIBLE);
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.tic));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Recipe recipeUpdate = new Recipe(tieShowNombre.getText().toString(), spShowCategoria.getSelectedItem().toString(), tieSHowDuracion.getText().toString(), tieShowCantidad.getText().toString(), edShowIngredientes.getText().toString(), edShowPasos.getText().toString(), false);
-                RecipeRepository.getInstance().update(recipeUpdate);
-                NavHostFragment.findNavController(ShowRecetaFragment.this).navigateUp();
-            }
-        });
+        fab.setVisibility(View.GONE);
     }
 }

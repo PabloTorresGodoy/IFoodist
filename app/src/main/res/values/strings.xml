@@ -38,6 +38,7 @@
     <string name="text_add_dependency">Se ha creado la receta</string>
     <string name="notification_title_recipe">Alta de receta</string>
     <string name="text_add_recipe">"Se ha creado la receta: "</string>
+    <string name="btGuardar">Guardar receta</string>
 
     <string-array name="categorias">
         <item>Plato Principal</item>
