@@ -22,29 +22,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilSingUpUser"
+        android:id="@+id/tilSingUpMail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
         app:layout_constraintTop_toBottomOf="@+id/tvSingUpTitle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieSingUpUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/tieSingUpUser" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilSingUpMail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/tilSingUpUser"
-        app:layout_constraintStart_toStartOf="@+id/tilSingUpUser"
-        app:layout_constraintTop_toBottomOf="@+id/tilSingUpUser">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieSingUpMail"
@@ -64,6 +48,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieSingUpPassword"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tieSingUpPassword" />
@@ -80,6 +65,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieSingUpConfirmPassword"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tieSingUpConfirmPassword" />
@@ -90,7 +76,6 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="ShowDashBoard"
         android:text="@string/btSingUpRegistrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

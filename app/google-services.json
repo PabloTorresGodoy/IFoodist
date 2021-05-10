@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "416030248580",
+    "project_id": "ifoodist",
+    "storage_bucket": "ifoodist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416030248580:android:8362587ae30b85e9d83cd1",
+        "android_client_info": {
+          "package_name": "com.pablotorres.ifoodist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416030248580-2losl2o941cojq8erdnrfgt0pnp0pif5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdvO7VdpZ5TYfkwIXHiCnBw_ZvN4Mi_L0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416030248580-2losl2o941cojq8erdnrfgt0pnp0pif5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
