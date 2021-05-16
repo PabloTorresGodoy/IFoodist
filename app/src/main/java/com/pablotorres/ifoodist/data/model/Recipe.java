@@ -18,6 +18,7 @@ import java.util.Objects;
 
 public class Recipe implements Comparable<Recipe>, Serializable {
 
+    private String id;
     private String nombre;
     private String categoria;
     private String duracion;
@@ -36,7 +37,24 @@ public class Recipe implements Comparable<Recipe>, Serializable {
         this.favorite = favorite;
     }
 
+    public Recipe(String id, String nombre, String categoria, String duracion, String cantidad, List<String> ingredientes, List<String> pasos, boolean favorite) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.duracion = duracion;
+        this.cantidad = cantidad;
+        this.ingredientes = ingredientes;
+        this.pasos = pasos;
+        this.favorite = favorite;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

@@ -16,17 +16,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
+import com.pablotorres.ifoodist.data.repository.Account;
 import com.pablotorres.ifoodist.data.repository.RecipeRepository;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddRecetaFragment extends Fragment {
 
@@ -47,7 +54,7 @@ public class AddRecetaFragment extends Fragment {
     private PasoAdapter adapterPaso;
     private ArrayList<String> prueba = new ArrayList<>();
     private Recipe recipe;
-
+    private FirebaseFirestore db;
 
     public AddRecetaFragment() {
         // Required empty public constructor
@@ -70,6 +77,8 @@ public class AddRecetaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        db = FirebaseFirestore.getInstance();
 
         btGuardar = view.findViewById(R.id.btGuardar);
         tieNombre=view.findViewById(R.id.tieNombre);
@@ -117,8 +126,23 @@ public class AddRecetaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!tieNombre.getText().toString().equals("")){
-                    RecipeRepository.getInstance().add(new Recipe(tieNombre.getText().toString(), spinner.getSelectedItem().toString(), tieDuracion.getText().toString(), tieDuracion.getText().toString(), adapterIngrediente.getList(), adapterPaso.getList(), false));
-                    NavHostFragment.findNavController(AddRecetaFragment.this).navigateUp();
+                    Recipe recipe = new Recipe(tieNombre.getText().toString(), spinner.getSelectedItem().toString(), tieDuracion.getText().toString(), tieCantidad.getText().toString(), adapterIngrediente.getList(), adapterPaso.getList(), false);
+
+                    Map<String, Object> receta = new HashMap<>();
+                    receta.put("nombre", tieNombre.getText().toString());
+                    receta.put("categoria", spinner.getSelectedItem().toString());
+                    receta.put("duracion", tieDuracion.getText().toString());
+                    receta.put("cantidad", tieCantidad.getText().toString());
+                    receta.put("ingredientes", adapterIngrediente.getList());
+                    receta.put("pasos", adapterPaso.getList());
+                    receta.put("favorito", false);
+
+                    db.collection(Account.getInstance().getUser()).document().set(receta).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            NavHostFragment.findNavController(AddRecetaFragment.this).navigateUp();
+                        }
+                    });
                 }
                 else
                     tilNombre.setError("El nombre no puede estar vacío");
