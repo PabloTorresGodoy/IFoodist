@@ -44,7 +44,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     public interface OnManageRecipeListener{
         void onClickRecipe(Recipe recipe);
-        void onDeleteRecipe(Recipe recipe);
     }
 
     @NonNull
@@ -81,14 +80,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                @Override
                public void onClick(View v) {
                    listener.onClickRecipe(list.get(getAdapterPosition()));
-               }
-           });
-
-           itemView.setOnLongClickListener(new View.OnLongClickListener() {
-               @Override
-               public boolean onLongClick(View v) {
-                   listener.onDeleteRecipe((list.get(getAdapterPosition())));
-                   return false;
                }
            });
 

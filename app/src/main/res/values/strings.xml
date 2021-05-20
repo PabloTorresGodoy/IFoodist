@@ -39,6 +39,9 @@
     <string name="notification_title_recipe">Alta de receta</string>
     <string name="text_add_recipe">"Se ha creado la receta: "</string>
     <string name="btGuardar">Guardar receta</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_share">Compartir</string>
 
     <string-array name="categorias">
         <item>Plato Principal</item>

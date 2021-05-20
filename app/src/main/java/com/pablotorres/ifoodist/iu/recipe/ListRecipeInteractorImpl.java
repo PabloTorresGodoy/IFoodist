@@ -32,13 +32,6 @@ public class ListRecipeInteractorImpl {
         db = FirebaseFirestore.getInstance();
     }
 
-    public void delete(Recipe deleted){
-        db.collection(Account.getInstance().getUser()).document(deleted.getId()).delete();
-//        RecipeRepository.getInstance().delete(deleted);
-        load();
-        callback.OnSuccessDeleted(deleted);
-    }
-
     public interface ListRecipeInteractor{
         void OnNoData();
         void OnSuccess(List<Recipe> list);

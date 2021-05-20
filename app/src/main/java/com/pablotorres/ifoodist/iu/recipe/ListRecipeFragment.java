@@ -90,11 +90,6 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
         NavHostFragment.findNavController(ListRecipeFragment.this).navigate(R.id.action_recetarioFragment_to_showRecetaFragment, bundle);
     }
 
-    @Override
-    public void onDeleteRecipe(Recipe deleted) {
-        presenter.delete(deleted);
-    }
-
     private void Ordenar() {
         adapter.ordenar();
     }

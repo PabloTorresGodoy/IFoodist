@@ -12,6 +12,5 @@ public interface ListRecipeContract {
 
     interface Presenter extends BasePresenter {
         void load();
-        void delete(Recipe deleted);
     }
 }

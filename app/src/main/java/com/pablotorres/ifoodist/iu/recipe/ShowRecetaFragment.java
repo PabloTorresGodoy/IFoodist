@@ -5,18 +5,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
+import com.pablotorres.ifoodist.data.repository.Account;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteShowAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
@@ -35,6 +41,7 @@ public class ShowRecetaFragment extends Fragment {
     private TextView tvCategoria;
     private IngredienteShowAdapter ingredienteAdapter;
     private PasoShowAdapter pasoAdapter;
+    private FirebaseFirestore db;
 
     public static ShowRecetaFragment newInstance(Bundle bundle) {
         ShowRecetaFragment fragment = new ShowRecetaFragment();
@@ -47,14 +54,36 @@ public class ShowRecetaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_show_receta, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_edit, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_delete:
+                delete();
+                break;
+            case R.id.action_edit:
+                break;
+            case R.id.action_share:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -91,5 +120,11 @@ public class ShowRecetaFragment extends Fragment {
 
         fab = getActivity().findViewById(R.id.fab);
         fab.setVisibility(View.GONE);
+    }
+
+    private void delete(){
+        Recipe recipe = (Recipe) getArguments().getSerializable("recipe");
+        db.collection(Account.getInstance().getUser()).document(recipe.getId()).delete();
+        NavHostFragment.findNavController(this).navigateUp();
     }
 }

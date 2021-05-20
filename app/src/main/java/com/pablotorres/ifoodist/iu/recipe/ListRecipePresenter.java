@@ -20,11 +20,6 @@ public class ListRecipePresenter implements ListRecipeContract.Presenter, ListRe
     }
 
     @Override
-    public void delete(Recipe deleted) {
-        interactor.delete(deleted);
-    }
-
-    @Override
     public void onDestroy() {
         view=null;
         interactor=null;
