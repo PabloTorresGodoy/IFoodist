@@ -1,8 +1,11 @@
 package com.pablotorres.ifoodist.iu.adapter;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -51,7 +54,7 @@ public class PasoAdapter extends RecyclerView.Adapter<PasoAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull PasoAdapter.ViewHolder holder, int position) {
-        holder.tvPasoItem.setText(list.get(position));
+        holder.edPasoItem.setText(list.get(position));
     }
 
     @Override
@@ -62,12 +65,29 @@ public class PasoAdapter extends RecyclerView.Adapter<PasoAdapter.ViewHolder>{
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-       TextView tvPasoItem;
+       EditText edPasoItem;
        ImageButton btDelete;
 
        public ViewHolder(@NonNull View itemView) {
            super(itemView);
-           tvPasoItem = itemView.findViewById(R.id.tvPasoItem);
+           edPasoItem = itemView.findViewById(R.id.edPasoItem);
+           edPasoItem.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   list.remove(getAdapterPosition());
+                   list.add(getAdapterPosition(), s.toString());
+               }
+
+               @Override
+               public void afterTextChanged(Editable s) {
+
+               }
+           });
            btDelete = itemView.findViewById(R.id.btDelete);
            btDelete.setOnClickListener(new View.OnClickListener() {
                @Override
