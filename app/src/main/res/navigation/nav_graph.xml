@@ -26,9 +26,21 @@
         android:id="@+id/showRecetaFragment"
         android:name="com.pablotorres.ifoodist.iu.recipe.ShowRecetaFragment"
         android:label="Receta"
-        tools:layout="@layout/fragment_show_receta" />
+        tools:layout="@layout/fragment_show_receta" >
+        <action
+            android:id="@+id/action_showRecetaFragment_to_editRecetaFragment"
+            app:destination="@id/editRecetaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.pablotorres.ifoodist.iu.preferences.SettingFragment"
         android:label="Ajustes" />
+    <fragment
+        android:id="@+id/editRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.EditRecetaFragment"
+        android:label="EditRecetaFragment" >
+        <action
+            android:id="@+id/back_to_list"
+            app:popUpTo="@id/recetarioFragment"/>
+    </fragment>
 </navigation>

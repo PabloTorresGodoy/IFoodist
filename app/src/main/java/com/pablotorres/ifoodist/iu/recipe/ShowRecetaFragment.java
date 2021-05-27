@@ -42,6 +42,7 @@ public class ShowRecetaFragment extends Fragment {
     private IngredienteShowAdapter ingredienteAdapter;
     private PasoShowAdapter pasoAdapter;
     private FirebaseFirestore db;
+    private Recipe recipe;
 
     public static ShowRecetaFragment newInstance(Bundle bundle) {
         ShowRecetaFragment fragment = new ShowRecetaFragment();
@@ -78,6 +79,9 @@ public class ShowRecetaFragment extends Fragment {
                 delete();
                 break;
             case R.id.action_edit:
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("recipe", recipe);
+                NavHostFragment.findNavController(ShowRecetaFragment.this).navigate(R.id.action_showRecetaFragment_to_editRecetaFragment, bundle);
                 break;
             case R.id.action_share:
                 break;
@@ -97,7 +101,7 @@ public class ShowRecetaFragment extends Fragment {
         rvShowPasos = view.findViewById(R.id.rvPasos);
         tvCategoria = view.findViewById(R.id.tvCategoria);
 
-        Recipe recipe = (Recipe) getArguments().getSerializable("recipe");
+        recipe = (Recipe) getArguments().getSerializable("recipe");
 
         tieShowNombre.setText(recipe.getNombre());
         tieShowCantidad.setText(recipe.getCantidad());

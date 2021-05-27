@@ -42,6 +42,7 @@
     <string name="action_edit">Editar</string>
     <string name="action_delete">Eliminar</string>
     <string name="action_share">Compartir</string>
+    <string name="btActualizar">Actualizar</string>
 
     <string-array name="categorias">
         <item>Plato Principal</item>
