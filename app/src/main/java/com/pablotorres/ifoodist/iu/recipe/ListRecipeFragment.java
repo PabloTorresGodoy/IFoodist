@@ -37,7 +37,7 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
     private RecyclerView rvRecipe;
     private RecipeAdapter adapter;
     private ListRecipeContract.Presenter presenter;
-    private TextView imgNoData;
+    private ImageView imgNoData;
     private ProgressBar pbLoading;
 
     private List<Recipe> list;
@@ -93,6 +93,35 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
         rvRecipe.setAdapter(adapter);
 
         presenter= new ListRecipePresenter(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_todo:
+                adapter.update(list);
+                break;
+            case R.id.action_principal:
+                adapter.filtrarCategoria(list, "Plato Principal");
+                break;
+            case R.id.action_entrante:
+                adapter.filtrarCategoria(list, "Entrante");
+                break;
+            case R.id.action_postre:
+                adapter.filtrarCategoria(list, "Postre");
+                break;
+            case R.id.action_bebida:
+                adapter.filtrarCategoria(list, "Bebida");
+                break;
+            case R.id.action_salsa:
+                adapter.filtrarCategoria(list, "Salsa");
+                break;
+            case R.id.action_otro:
+                adapter.filtrarCategoria(list, "Otro");
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

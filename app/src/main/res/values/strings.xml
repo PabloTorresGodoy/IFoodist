@@ -43,6 +43,14 @@
     <string name="action_delete">Eliminar</string>
     <string name="action_share">Compartir</string>
     <string name="btActualizar">Actualizar</string>
+    <string name="menu_filtro">Ordenar por:</string>
+    <string name="action_todo">Todos</string>
+    <string name="action_principal">Plato principal</string>
+    <string name="action_entrante">Entrante</string>
+    <string name="action_postre">Postre</string>
+    <string name="action_bebida">Bebida</string>
+    <string name="action_salsa">Salsa</string>
+    <string name="action_otro">Otro</string>
 
     <string-array name="categorias">
         <item>Plato Principal</item>

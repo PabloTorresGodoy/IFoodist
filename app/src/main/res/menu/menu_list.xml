@@ -8,4 +8,31 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>
+
+    <item android:title="@string/menu_filtro">
+        <menu>
+            <item
+                android:id="@+id/action_todo"
+                android:title="@string/action_todo" />
+            <item
+                android:id="@+id/action_principal"
+                android:title="@string/action_principal" />
+            <item
+                android:id="@+id/action_entrante"
+                android:title="@string/action_entrante" />
+            <item
+                android:id="@+id/action_postre"
+                android:title="@string/action_postre" />
+            <item
+                android:id="@+id/action_bebida"
+                android:title="@string/action_bebida" />
+            <item
+                android:id="@+id/action_salsa"
+                android:title="@string/action_salsa" />
+            <item
+                android:id="@+id/action_otro"
+                android:title="@string/action_otro" />
+        </menu>
+    </item>
+
 </menu>

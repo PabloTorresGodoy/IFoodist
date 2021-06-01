@@ -52,6 +52,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         update(listTmp);
     }
 
+    public void filtrarCategoria(List<Recipe> listReal, String categoria) {
+        List<Recipe> listTmp = new ArrayList<>();
+        for(Recipe receta : listReal){
+            if(receta.getCategoria().equals(categoria))
+                listTmp.add(receta);
+        }
+        update(listTmp);
+    }
+
     public interface OnManageRecipeListener{
         void onClickRecipe(Recipe recipe);
     }
