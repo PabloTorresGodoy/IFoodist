@@ -4,19 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".iu.recipe.ListRecipeFragment">
+    tools:context=".iu.recipe.ListRecipeFragment"
+    tools:visibility="visible">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
+    <ImageView
         android:id="@+id/imgNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="visible"
-        android:text="NO DATA"/>
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:src="@drawable/no_data"
+        android:text="NO DATA"
+        android:visibility="gone" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone" />
 
 </FrameLayout>

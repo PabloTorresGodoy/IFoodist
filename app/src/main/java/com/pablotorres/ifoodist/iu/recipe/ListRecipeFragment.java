@@ -11,10 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +38,9 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
     private RecipeAdapter adapter;
     private ListRecipeContract.Presenter presenter;
     private TextView imgNoData;
+    private ProgressBar pbLoading;
+
+    private List<Recipe> list;
 
     public ListRecipeFragment() {
         // Required empty public constructor
@@ -44,6 +51,8 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        list = new ArrayList<>();
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -57,6 +66,8 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
     public void onStart() {
         super.onStart();
         presenter.load();
+
+        pbLoading.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -64,6 +75,7 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
         super.onViewCreated(view, savedInstanceState);
 
         imgNoData = view.findViewById(R.id.imgNoData);
+        pbLoading = view.findViewById(R.id.pbLoading);
 
         fab = getActivity().findViewById(R.id.fab);
         fab.setVisibility(View.VISIBLE);
@@ -81,6 +93,27 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
         rvRecipe.setAdapter(adapter);
 
         presenter= new ListRecipePresenter(this);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_list, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        searchView.setQueryHint("buscar...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filtrar(list,newText);
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -108,6 +141,12 @@ public class ListRecipeFragment extends Fragment implements ListRecipeContract.V
     public void onSuccess(List<Recipe> list) {
         if(imgNoData.getVisibility()==View.VISIBLE)
             imgNoData.setVisibility(View.GONE);
+
+        if(pbLoading.getVisibility()==View.VISIBLE)
+            pbLoading.setVisibility(View.GONE);
+
+        this.list.clear();
+        this.list.addAll(list);
 
         adapter.update(list);
     }

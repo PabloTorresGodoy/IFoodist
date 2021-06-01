@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder>{
 
-   private List<Recipe> list;
-   private  OnManageRecipeListener recipeListener;
+    private List<Recipe> list;
+    private  OnManageRecipeListener recipeListener;
 
 
     public RecipeAdapter(List<Recipe> list, OnManageRecipeListener recipeListener) {
@@ -40,6 +41,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();
+    }
+
+    public void filtrar(List<Recipe> listReal, String newText) {
+        List<Recipe> listTmp = new ArrayList<>();
+        for(Recipe receta : listReal){
+            if(receta.getNombre().contains(newText))
+                listTmp.add(receta);
+        }
+        update(listTmp);
     }
 
     public interface OnManageRecipeListener{
