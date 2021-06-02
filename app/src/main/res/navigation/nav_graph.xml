@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recetarioFragment"
-        android:name="com.pablotorres.ifoodist.iu.recipe.ListRecipeFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.ListRecipe.ListRecipeFragment"
         android:label="Lista de recetas"
         tools:layout="@layout/fragment_list_recipe" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/addRecetaFragment"
-        android:name="com.pablotorres.ifoodist.iu.recipe.AddRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.AddRecipeFragment.AddRecipeFragment"
         android:label="Añadir una receta"
         tools:layout="@layout/fragment_add_receta" />
     <fragment
         android:id="@+id/showRecetaFragment"
-        android:name="com.pablotorres.ifoodist.iu.recipe.ShowRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.ShowRecipe.ShowRecipeFragment"
         android:label="Receta"
         tools:layout="@layout/fragment_show_receta" >
         <action
@@ -37,7 +37,7 @@
         android:label="Ajustes" />
     <fragment
         android:id="@+id/editRecetaFragment"
-        android:name="com.pablotorres.ifoodist.iu.recipe.EditRecetaFragment"
+        android:name="com.pablotorres.ifoodist.iu.recipe.EditRecipeFragment.EditRecipeFragment"
         android:label="EditRecetaFragment" >
         <action
             android:id="@+id/back_to_list"

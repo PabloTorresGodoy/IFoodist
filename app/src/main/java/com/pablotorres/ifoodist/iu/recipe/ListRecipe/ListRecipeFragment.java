@@ -1,10 +1,9 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.ListRecipe;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,13 +18,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
-import com.pablotorres.ifoodist.data.repository.RecipeRepository;
 import com.pablotorres.ifoodist.iu.adapter.RecipeAdapter;
 
 import java.util.ArrayList;

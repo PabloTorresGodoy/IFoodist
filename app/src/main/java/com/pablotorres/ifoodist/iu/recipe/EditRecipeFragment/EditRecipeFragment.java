@@ -1,4 +1,4 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.EditRecipeFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,22 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
 import com.pablotorres.ifoodist.data.repository.Account;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
-import com.pablotorres.ifoodist.iu.adapter.IngredienteShowAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
-import com.pablotorres.ifoodist.iu.adapter.PasoShowAdapter;
+import com.pablotorres.ifoodist.iu.recipe.ShowRecipe.ShowRecipeFragment;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditRecetaFragment extends Fragment {
+public class EditRecipeFragment extends Fragment implements EditRecipeContract.View{
 
     private TextInputEditText tieEditNombre;
     private TextInputEditText tieEditDuracion;
@@ -51,11 +47,13 @@ public class EditRecetaFragment extends Fragment {
     private EditText edEditIngredientes;
     private FirebaseFirestore db;
     private Recipe recipe;
+    private EditRecipePresenter presenter;
     private String[] arrayCategorias = {"Plato Principal", "Entrante", "Postre", "Bebida","Salsa","Otro" };
     int cont = 0;
 
-    public static ShowRecetaFragment newInstance(Bundle bundle) {
-        ShowRecetaFragment fragment = new ShowRecetaFragment();
+
+    public static ShowRecipeFragment newInstance(Bundle bundle) {
+        ShowRecipeFragment fragment = new ShowRecipeFragment();
         if(bundle != null)
             fragment.setArguments(bundle);
 
@@ -92,6 +90,7 @@ public class EditRecetaFragment extends Fragment {
         btEditIngrediente = view.findViewById(R.id.btEditIngrediente);
         edEditPasos = view.findViewById(R.id.edEditPasos);
         edEditIngredientes = view.findViewById(R.id.edEditIngredientes);
+        presenter = new EditRecipePresenter(this);
 
         cargarReceta();
 
@@ -116,21 +115,16 @@ public class EditRecetaFragment extends Fragment {
             public void onClick(View v) {
                 Recipe recipeActualizada = recogerReceta();
 
-                Map<String, Object> receta = new HashMap<>();
-                receta.put("nombre", recipeActualizada.getNombre());
-                receta.put("categoria", recipeActualizada.getCategoria());
-                receta.put("duracion", recipeActualizada.getDuracion());
-                receta.put("cantidad", recipeActualizada.getCantidad());
-                receta.put("ingredientes", recipeActualizada.getIngredientes());
-                receta.put("pasos", recipeActualizada.getPasos());
-                receta.put("favorito", false);
+                Map<String, Object> recetaUpdate = new HashMap<>();
+                recetaUpdate.put("nombre", recipeActualizada.getNombre());
+                recetaUpdate.put("categoria", recipeActualizada.getCategoria());
+                recetaUpdate.put("duracion", recipeActualizada.getDuracion());
+                recetaUpdate.put("cantidad", recipeActualizada.getCantidad());
+                recetaUpdate.put("ingredientes", recipeActualizada.getIngredientes());
+                recetaUpdate.put("pasos", recipeActualizada.getPasos());
+                recetaUpdate.put("favorito", false);
 
-                db.collection(Account.getInstance().getUser()).document(recipe.getId()).update(receta).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        NavHostFragment.findNavController(EditRecetaFragment.this).navigate(R.id.back_to_list);
-                    }
-                });
+                presenter.update(recetaUpdate, recipe);
             }
         });
     }
@@ -160,4 +154,8 @@ public class EditRecetaFragment extends Fragment {
         return new Recipe(tieEditNombre.getText().toString(), spEditCategoria.getSelectedItem().toString(), tieEditDuracion.getText().toString(), tieEditCantidad.getText().toString(), ingredienteAdapter.getList(), pasoAdapter.getList(), false);
     }
 
+    @Override
+    public void onSuccessUpdate() {
+        NavHostFragment.findNavController(EditRecipeFragment.this).navigate(R.id.back_to_list);
+    }
 }

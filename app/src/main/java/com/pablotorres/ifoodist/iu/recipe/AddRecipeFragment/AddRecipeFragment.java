@@ -1,4 +1,4 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.AddRecipeFragment;
 
 import android.os.Bundle;
 
@@ -16,18 +16,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
 import com.pablotorres.ifoodist.data.repository.Account;
-import com.pablotorres.ifoodist.data.repository.RecipeRepository;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
 
@@ -35,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddRecetaFragment extends Fragment {
+public class AddRecipeFragment extends Fragment implements AddRecipeContract.View {
 
     private Spinner spinner;
     private FloatingActionButton fab;
@@ -55,8 +52,9 @@ public class AddRecetaFragment extends Fragment {
     private ArrayList<String> prueba = new ArrayList<>();
     private Recipe recipe;
     private FirebaseFirestore db;
+    private AddRecipePresenter presenter;
 
-    public AddRecetaFragment() {
+    public AddRecipeFragment() {
         // Required empty public constructor
     }
 
@@ -98,6 +96,8 @@ public class AddRecetaFragment extends Fragment {
         rvIngredientes.setLayoutManager(layoutManagerIngrediente);
         rvIngredientes.setAdapter(adapterIngrediente);
 
+        presenter = new AddRecipePresenter(this);
+
         btAddIngrediente = view.findViewById(R.id.btAddIngrediente);
         btAddIngrediente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,17 +137,17 @@ public class AddRecetaFragment extends Fragment {
                     receta.put("pasos", adapterPaso.getList());
                     receta.put("favorito", false);
 
-                    db.collection(Account.getInstance().getUser()).document().set(receta).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            NavHostFragment.findNavController(AddRecetaFragment.this).navigateUp();
-                        }
-                    });
+                    presenter.save(receta);
                 }
                 else
                     tilNombre.setError("El nombre no puede estar vacío");
             }
         });
+    }
+
+    @Override
+    public void onSuccessSave() {
+        NavHostFragment.findNavController(AddRecipeFragment.this).navigateUp();
     }
 
 //    private void showNotification(){

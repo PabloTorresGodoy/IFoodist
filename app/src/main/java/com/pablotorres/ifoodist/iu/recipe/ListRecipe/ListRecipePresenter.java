@@ -1,6 +1,8 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.ListRecipe;
 
 import com.pablotorres.ifoodist.data.model.Recipe;
+import com.pablotorres.ifoodist.iu.recipe.ListRecipe.ListRecipeContract;
+import com.pablotorres.ifoodist.iu.recipe.ListRecipe.ListRecipeInteractorImpl;
 
 import java.util.List;
 

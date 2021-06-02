@@ -53,15 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/chkRemember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:checked="true"
-            android:text="@string/chkRemember" />
-
         <Button
             android:id="@+id/btSingUp"
             style="@style/Widget.AppCompat.Button.Borderless"

@@ -1,4 +1,4 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.ShowRecipe;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -23,16 +23,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pablotorres.ifoodist.R;
 import com.pablotorres.ifoodist.data.model.Recipe;
-import com.pablotorres.ifoodist.data.repository.Account;
-import com.pablotorres.ifoodist.iu.adapter.IngredienteAdapter;
 import com.pablotorres.ifoodist.iu.adapter.IngredienteShowAdapter;
-import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoShowAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ShowRecetaFragment extends Fragment implements ShowRecetaContract.View{
+public class ShowRecipeFragment extends Fragment implements ShowRecipeContract.View{
 
     private TextInputEditText tieShowNombre;
     private TextInputEditText tieSHowDuracion;
@@ -45,10 +41,10 @@ public class ShowRecetaFragment extends Fragment implements ShowRecetaContract.V
     private PasoShowAdapter pasoAdapter;
     private FirebaseFirestore db;
     private Recipe recipe;
-    private ShowRecetaContract.Presenter presenter;
+    private ShowRecipeContract.Presenter presenter;
 
-    public static ShowRecetaFragment newInstance(Bundle bundle) {
-        ShowRecetaFragment fragment = new ShowRecetaFragment();
+    public static ShowRecipeFragment newInstance(Bundle bundle) {
+        ShowRecipeFragment fragment = new ShowRecipeFragment();
         if(bundle != null)
             fragment.setArguments(bundle);
 
@@ -84,7 +80,7 @@ public class ShowRecetaFragment extends Fragment implements ShowRecetaContract.V
             case R.id.action_edit:
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("recipe", recipe);
-                NavHostFragment.findNavController(ShowRecetaFragment.this).navigate(R.id.action_showRecetaFragment_to_editRecetaFragment, bundle);
+                NavHostFragment.findNavController(ShowRecipeFragment.this).navigate(R.id.action_showRecetaFragment_to_editRecetaFragment, bundle);
                 break;
             case R.id.action_share:
                 compartir();
@@ -144,7 +140,7 @@ public class ShowRecetaFragment extends Fragment implements ShowRecetaContract.V
         fab = getActivity().findViewById(R.id.fab);
         fab.setVisibility(View.GONE);
 
-        presenter= new ShowRecetaPresenter(this);
+        presenter= new ShowRecipePresenter(this);
     }
 
     private void delete(){

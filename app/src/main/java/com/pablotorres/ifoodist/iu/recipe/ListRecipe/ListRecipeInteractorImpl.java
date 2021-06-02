@@ -1,4 +1,4 @@
-package com.pablotorres.ifoodist.iu.recipe;
+package com.pablotorres.ifoodist.iu.recipe.ListRecipe;
 
 import android.util.Log;
 import android.widget.Toast;

@@ -88,13 +88,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
        TextView tvNombre;
        TextView tvCategoria;
-       ImageView imgCorazon;
 
        public ViewHolder(@NonNull View itemView, final OnManageRecipeListener listener) {
            super(itemView);
            tvNombre = itemView.findViewById(R.id.tvTitle);
            tvCategoria = itemView.findViewById(R.id.tvCategoria);
-           imgCorazon = itemView.findViewById(R.id.imgCorazon);
            itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
