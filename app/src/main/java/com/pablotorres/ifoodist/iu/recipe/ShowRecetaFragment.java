@@ -30,8 +30,9 @@ import com.pablotorres.ifoodist.iu.adapter.PasoAdapter;
 import com.pablotorres.ifoodist.iu.adapter.PasoShowAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ShowRecetaFragment extends Fragment {
+public class ShowRecetaFragment extends Fragment implements ShowRecetaContract.View{
 
     private TextInputEditText tieShowNombre;
     private TextInputEditText tieSHowDuracion;
@@ -44,6 +45,7 @@ public class ShowRecetaFragment extends Fragment {
     private PasoShowAdapter pasoAdapter;
     private FirebaseFirestore db;
     private Recipe recipe;
+    private ShowRecetaContract.Presenter presenter;
 
     public static ShowRecetaFragment newInstance(Bundle bundle) {
         ShowRecetaFragment fragment = new ShowRecetaFragment();
@@ -85,10 +87,15 @@ public class ShowRecetaFragment extends Fragment {
                 NavHostFragment.findNavController(ShowRecetaFragment.this).navigate(R.id.action_showRecetaFragment_to_editRecetaFragment, bundle);
                 break;
             case R.id.action_share:
+                compartir();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void compartir() {
+
     }
 
     private void DialogDelete() {
@@ -136,11 +143,17 @@ public class ShowRecetaFragment extends Fragment {
 
         fab = getActivity().findViewById(R.id.fab);
         fab.setVisibility(View.GONE);
+
+        presenter= new ShowRecetaPresenter(this);
     }
 
     private void delete(){
         Recipe recipe = (Recipe) getArguments().getSerializable("recipe");
-        db.collection(Account.getInstance().getUser()).document(recipe.getId()).delete();
+        presenter.delete(recipe);
+    }
+
+    @Override
+    public void onSuccessDeleted() {
         NavHostFragment.findNavController(this).navigateUp();
     }
 }
