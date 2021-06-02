@@ -1,5 +1,6 @@
 package com.pablotorres.ifoodist.iu.recipe;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -76,7 +77,7 @@ public class ShowRecetaFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_delete:
-                delete();
+                DialogDelete();
                 break;
             case R.id.action_edit:
                 Bundle bundle = new Bundle();
@@ -88,6 +89,17 @@ public class ShowRecetaFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void DialogDelete() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("¿Seguro que desea eliminar la receta?")
+                .setTitle("Eliminar")
+                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Si", (dialog, which) -> delete());
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
