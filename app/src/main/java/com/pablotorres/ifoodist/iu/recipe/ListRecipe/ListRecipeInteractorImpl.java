@@ -54,8 +54,9 @@ public class ListRecipeInteractorImpl {
 
                     if(list.isEmpty())
                         callback.OnNoData();
-                    else{}
+                    else {
                         callback.OnSuccess(list);
+                    }
                 }
             }
         });

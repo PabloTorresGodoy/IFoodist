@@ -38,7 +38,8 @@
         android:id="@+id/tilPassword"
         app:errorEnabled="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePassword"
@@ -56,12 +57,12 @@
         <Button
             android:id="@+id/btSingUp"
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:onClick="ShowSignUp"
             android:text="@string/btSingUp" />
-
     </LinearLayout>
 
     <Button
@@ -73,8 +74,6 @@
         android:background="@drawable/rounded_corners"
         android:text="@string/btSingIn" />
 
-    <!-- Con la propiedad android:gravity posiciono abajo TODOS los componentes
-    y con android:layout_gravity se ha de indicar en cada uno de ellos -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -83,47 +82,4 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/colorPrimaryDark"
         android:visibility="gone"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvRegisterOption"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="bottom|center"
-            android:text="@string/tvRegisterOption" />
-
-        <LinearLayout
-            android:id="@+id/llbottombar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/login_llbottombar_margin_bottom"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btGoogle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_google"
-                android:text="Button" />
-
-            <ImageButton
-                android:id="@+id/btFacebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_facebook"
-                android:text="Button" />
-        </LinearLayout>
-    </LinearLayout>
-
 </LinearLayout>

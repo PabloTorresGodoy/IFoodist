@@ -5,16 +5,13 @@
         <item
             android:id="@+id/action_recipe"
             android:title="@string/action_recipe"></item>
+        <item
+            android:id="@+id/action_create"
+            android:title="Crear Receta"></item>
     </group>
 
     <item android:title="@string/menu_opciones">
         <menu>
-            <item
-                android:id="@+id/action_help"
-                android:title="@string/action_help" />
-            <item
-                android:id="@+id/action_settings"
-                android:title="@string/action_settings" />
             <item
                 android:id="@+id/action_about"
                 android:title="@string/action_about" />

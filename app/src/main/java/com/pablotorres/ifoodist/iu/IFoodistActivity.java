@@ -58,10 +58,8 @@ public class IFoodistActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.close();
         switch (item.getItemId()){
-            case R.id.action_settings:
-                //Se tiene que utilizar el id del Fragment Settings para navegar a el.
-                //No esta vinculado por una accion
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.settingFragment);
+            case R.id.action_create:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.addRecetaFragment);
                 break;
             case R.id.action_recipe:
                 Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.recetarioFragment);

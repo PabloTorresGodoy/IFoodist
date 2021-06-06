@@ -14,61 +14,64 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/login_title_margin_top"
-                android:fontFamily="sans-serif-black"
-                android:gravity="center"
                 android:text="@string/tvTitle"
-                android:textSize="50dp" />
+                android:gravity="center"
+                android:fontFamily="sans-serif-black"
+                android:textSize="50dp"
+                android:layout_margin="@dimen/login_title_margin_top"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilUser"
+                app:errorEnabled="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="prueba@gmail.com"
                     android:hint="@string/tieUser" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
+                app:errorEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiePassword"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/tiePassword"
-                    android:inputType="textPassword" />
+                    android:text="prueba1"
+                    android:hint="@string/tiePassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <Button
                     android:id="@+id/btSingUp"
                     style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_marginTop="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:onClick="ShowSignUp"
                     android:text="@string/btSingUp" />
-
             </LinearLayout>
 
             <Button
@@ -78,50 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
-                android:onClick="ShowDashBoard"
                 android:text="@string/btSingIn" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvRegisterOption"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="bottom|center"
-                    android:text="@string/tvRegisterOption" />
-
-                <LinearLayout
-                    android:id="@+id/llbottombar"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="@dimen/login_llbottombar_margin_bottom"
-                    android:layout_weight="1"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/btGoogle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_google"
-                        android:text="Button" />
-
-                    <ImageButton
-                        android:id="@+id/btFacebook"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_facebook"
-                        android:text="Button" />
-                </LinearLayout>
-            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -130,8 +90,7 @@
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
                 android:indeterminateTint="@color/colorPrimaryDark"
-                android:visibility="gone" />
-
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 
