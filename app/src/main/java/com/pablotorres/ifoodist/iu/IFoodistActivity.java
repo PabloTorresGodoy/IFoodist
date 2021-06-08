@@ -9,6 +9,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -63,6 +65,10 @@ public class IFoodistActivity extends AppCompatActivity implements NavigationVie
                 break;
             case R.id.action_recipe:
                 Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.recetarioFragment);
+                break;
+            case R.id.action_about:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ifoodist.wordpress.com/"));
+                startActivity(browserIntent);
                 break;
         }
         return true;
