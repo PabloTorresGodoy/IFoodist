@@ -3,19 +3,24 @@ package com.pablotorres.ifoodist.iu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.pablotorres.ifoodist.R;
+import com.pablotorres.ifoodist.data.repository.Account;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +32,7 @@ public class IFoodistActivity extends AppCompatActivity implements NavigationVie
     private NavigationView navigationView;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+    private TextView tvEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

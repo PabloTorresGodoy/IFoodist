@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/colorPrimaryDark"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Lourdes Rodríguez Morón"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:paddingLeft="@dimen/paddin_header_left"/>
 
-    <!-- Correo de la cuenta -->
-    <TextView
-        android:id="@+id/email"
-        style="@style/Widget.AppCompat.Spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="moronlu18@gmail.com"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="@dimen/layout_width_profile_image"
+        android:layout_height="@dimen/layout_height_profile_image"
         android:paddingLeft="@dimen/paddin_header_left"
-        android:textColor="@android:color/white" />
+        android:paddingTop="@dimen/padding_header_top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_logo"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp"
+        app:civ_circle_background_color="@android:color/white"/>
+
 </LinearLayout>

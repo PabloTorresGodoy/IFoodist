@@ -72,10 +72,6 @@ public class ShowRecipeFragment extends Fragment implements ShowRecipeContract.V
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
-
-        if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE ) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,},1000);
-        }
     }
 
     @Override
@@ -104,7 +100,10 @@ public class ShowRecipeFragment extends Fragment implements ShowRecipeContract.V
                 NavHostFragment.findNavController(ShowRecipeFragment.this).navigate(R.id.action_showRecetaFragment_to_editRecetaFragment, bundle);
                 break;
             case R.id.action_share:
-                compartir();
+                if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE ) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,},1000);
+                }else
+                    compartir();
                 break;
         }
 

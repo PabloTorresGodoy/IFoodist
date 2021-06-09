@@ -9,8 +9,8 @@
     <dimen name="SingUp_title_margin_top">30dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="header_height">170dp</dimen>
-    <dimen name="layout_width_profile_image">96dp</dimen>
-    <dimen name="layout_height_profile_image">96dp</dimen>
+    <dimen name="layout_width_profile_image">120dp</dimen>
+    <dimen name="layout_height_profile_image">120dp</dimen>
     <dimen name="paddin_header_left">16dp</dimen>
     <dimen name="padding_header_top">32dp</dimen>
 </resources>
